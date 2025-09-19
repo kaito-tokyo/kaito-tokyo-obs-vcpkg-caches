@@ -59,7 +59,7 @@ jobs:
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
       - name: "Build"
-        run: "$VCPKG_ROOT/vcpkg install --triplet x64-osx-obs"
+        run: "$VCPKG_ROOT/vcpkg install --triplet arm64-osx-obs"
 
   BuildOnMacOSX64:
     runs-on: "macos-15"
