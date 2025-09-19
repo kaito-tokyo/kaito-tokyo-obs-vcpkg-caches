@@ -1,4 +1,4 @@
-name: "Publish"
+name: "Build"
 
 on:
   push:
@@ -139,7 +139,7 @@ jobs:
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
       - name: "Build"
-        run: "$VCPKG_INSTALLATION_ROOT\vcpkg install --triplet x64-windows-static-md"
+        run: "$VCPKG_INSTALLATION_ROOT/vcpkg install --triplet x64-windows-static-md"
 
   BuildOnUbuntu:
     runs-on: "ubuntu-24.04"
