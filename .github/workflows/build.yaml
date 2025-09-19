@@ -59,7 +59,7 @@ jobs:
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
       - name: "Build"
-        run: "$VCPKG_INSTALLATION_ROOT/vcpkg install --triplet x64-osx-obs"
+        run: "$VCPKG_ROOT/vcpkg install --triplet x64-osx-obs"
 
   BuildOnMacOSX64:
     runs-on: "macos-15"
@@ -99,7 +99,7 @@ jobs:
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
       - name: "Build"
-        run: "$VCPKG_INSTALLATION_ROOT/vcpkg install --triplet x64-osx-obs"
+        run: "$VCPKG_ROOT/vcpkg install --triplet x64-osx-obs"
 
   BuildOnWindows:
     runs-on: "windows-2022"
@@ -139,7 +139,7 @@ jobs:
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
       - name: "Build"
-        run: "$VCPKG_INSTALLATION_ROOT/vcpkg install --triplet x64-windows-static-md"
+        run: "$VCPKG_ROOT/vcpkg install --triplet x64-windows-static-md"
 
   BuildOnUbuntu:
     runs-on: "ubuntu-24.04"
@@ -163,26 +163,6 @@ jobs:
         working-directory: "${{ env.VCPKG_ROOT }}"
         run: "./bootstrap-vcpkg.sh"
 
-      - name: "Install dependencies on Ubuntu"
-        run: |
-          echo "man-db man-db/auto-update boolean false" | sudo debconf-set-selections
-          sudo apt-get remove --purge -y man-db
-          sudo add-apt-repository -y ppa:obsproject/obs-studio
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            build-essential \
-            libgles2-mesa-dev \
-            obs-studio \
-            qt6-base-dev \
-            libqt6svg6-dev \
-            qt6-base-private-dev \
-            cmake \
-            git \
-            jq \
-            ninja-build \
-            pkg-config \
-            mono-devel
-
       - name: "Setup NuGet Credentials"
         run: |
           NUGET_PATH="$($VCPKG_ROOT/vcpkg fetch nuget | tail -n1)"
@@ -196,4 +176,4 @@ jobs:
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
       - name: "Build"
-        run: "$VCPKG_INSTALLATION_ROOT/vcpkg install --triplet x64-linux"
+        run: "$VCPKG_ROOT/vcpkg install --triplet x64-linux"
