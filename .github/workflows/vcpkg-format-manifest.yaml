@@ -21,7 +21,6 @@ permissions:
 
 jobs:
   VcpkgFormatManifest:
-    name: "Gersemi"
     runs-on: "ubuntu-24.04"
 
     timeout-minutes: 10
@@ -32,6 +31,4 @@ jobs:
 
       - name: "Run gersemi"
         run: |
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          brew install --quiet obsproject/tools/gersemi
-          gersemi --check **/*.cmake
+          $VCPKG_INSTALLATION_ROOT/vcpkg format-manifest vcpkg-overlay-ports/wolfssl.json
