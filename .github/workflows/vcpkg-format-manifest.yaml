@@ -31,4 +31,4 @@ jobs:
 
       - name: "Run gersemi"
         run: |
-          $VCPKG_INSTALLATION_ROOT/vcpkg format-manifest vcpkg-overlay-ports/wolfssl.json
+          $VCPKG_INSTALLATION_ROOT/vcpkg format-manifest vcpkg-overlay-ports/woflssl/wolfssl.json
