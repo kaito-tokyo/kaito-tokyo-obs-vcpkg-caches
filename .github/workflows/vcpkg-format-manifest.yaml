@@ -16,6 +16,9 @@ defaults:
   run:
     shell: "bash"
 
+env:
+  VCPKG_ROOT: "${{ github.workspace }}/vcpkg"
+
 permissions:
   contents: "read"
 
@@ -29,6 +32,18 @@ jobs:
       - name: "Checkout"
         uses: "actions/checkout@v5"
 
-      - name: "Run gersemi"
+      - name: "Checkout vcpkg repository"
+        uses: "actions/checkout@v5"
+        with:
+          repository: "microsoft/vcpkg"
+          path: "${{ env.VCPKG_ROOT }}"
+
+      - name: "Bootstrap vcpkg"
+        working-directory: "${{ env.VCPKG_ROOT }}"
+        run: "./bootstrap-vcpkg.sh"
+
+      - name: "Run vcpkg format-manifest"
         run: |
-          $VCPKG_INSTALLATION_ROOT/vcpkg format-manifest vcpkg-overlay-ports/woflssl/wolfssl.json
+          $VCPKG_ROOT/vcpkg format-manifest vcpkg-overlay-ports/wolfssl/vcpkg.json
+          $VCPKG_ROOT/vcpkg format-manifest vcpkg.json
+          git diff --quiet
