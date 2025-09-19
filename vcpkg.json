@@ -1,0 +1,19 @@
+{
+  "dependencies": [
+    {
+      "name": "cpr",
+      "default-features": false
+    },
+    {
+      "name": "curl",
+      "default-features": false,
+      "features": [
+        "wolfssl"
+      ]
+    },
+    "fmt",
+    "gtest",
+    "ncnn",
+    "neargye-semver"
+  ]
+}

@@ -1,0 +1,37 @@
+name: "Gersemi"
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: "${{ github.ref == 'refs/heads/main' }}"
+
+defaults:
+  run:
+    shell: "bash"
+
+permissions:
+  contents: "read"
+
+jobs:
+  Gersemi:
+    name: "Gersemi"
+    runs-on: "ubuntu-24.04"
+
+    timeout-minutes: 10
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v5"
+
+      - name: "Run gersemi"
+        run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          brew install --quiet obsproject/tools/gersemi
+          gersemi --check **/*.cmake
