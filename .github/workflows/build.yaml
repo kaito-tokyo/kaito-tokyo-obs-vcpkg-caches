@@ -140,7 +140,7 @@ jobs:
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
       - name: "Build"
-        run: "$VCPKG_ROOT/vcpkg install --triplet x64-windows-static-md"
+        run: "$VCPKG_ROOT/vcpkg install --triplet x64-windows-static-md-obs"
 
   BuildOnUbuntu:
     runs-on: "ubuntu-24.04"
@@ -180,4 +180,4 @@ jobs:
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
       - name: "Build"
-        run: "$VCPKG_ROOT/vcpkg install --triplet x64-linux"
+        run: "$VCPKG_ROOT/vcpkg install --triplet x64-linux-obs"
