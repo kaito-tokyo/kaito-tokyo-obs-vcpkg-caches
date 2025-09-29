@@ -24,6 +24,7 @@
     "fmt",
     "gtest",
     "ncnn",
-    "neargye-semver"
+    "neargye-semver",
+    "stb"
   ]
 }
