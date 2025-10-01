@@ -20,6 +20,13 @@
     "fmt",
     "gtest",
     "ncnn",
+    {
+      "name": "opencv4",
+      "default-features": false,
+      "features": [
+        "tesseract"
+      ]
+    },
     "stb"
   ]
 }
