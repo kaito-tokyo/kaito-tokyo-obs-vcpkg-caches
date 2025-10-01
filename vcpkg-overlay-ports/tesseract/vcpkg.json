@@ -6,10 +6,6 @@
   "license": "Apache-2.0",
   "supports": "!uwp",
   "dependencies": [
-    {
-      "name": "cpu-features",
-      "platform": "android"
-    },
     "leptonica",
     {
       "name": "vcpkg-cmake",
