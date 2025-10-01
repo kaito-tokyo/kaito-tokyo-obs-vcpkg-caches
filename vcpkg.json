@@ -25,6 +25,13 @@
       "default-features": false
     },
     "stb",
-    "tesseract"
+    "tesseract",
+    {
+      "name": "uwebsockets",
+      "default-features": false,
+      "features": [
+        "zlib"
+      ]
+    }
   ]
 }
