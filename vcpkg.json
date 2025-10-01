@@ -22,10 +22,7 @@
     "ncnn",
     {
       "name": "opencv4",
-      "default-features": false,
-      "features": [
-        "contrib"
-      ]
+      "default-features": false
     },
     "stb"
   ]
