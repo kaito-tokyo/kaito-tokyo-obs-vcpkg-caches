@@ -28,18 +28,21 @@
     "nlohmann-json",
     {
       "name": "opencv4",
-      "default-features": false
+      "default-features": false,
+      "features": [
+        "jpeg",
+        "png",
+        "tiff",
+        "webp"
+      ]
     },
     "stb",
     "tesseract",
-    "usockets",
     {
       "name": "uwebsockets",
-      "default-features": false,
       "features": [
         "zlib"
       ]
-    },
-    "zlib"
+    }
   ]
 }
