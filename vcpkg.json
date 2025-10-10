@@ -26,9 +26,14 @@
     },
     {
       "name": "ncnn",
+      "platform": "x64 & osx"
+    },
+    {
+      "name": "ncnn",
       "features": [
         "vulkan"
-      ]
+      ],
+      "platform": "!(x64 & osx)"
     },
     "nlohmann-json",
     {
