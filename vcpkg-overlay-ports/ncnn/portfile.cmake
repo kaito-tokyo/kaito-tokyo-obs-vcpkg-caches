@@ -22,12 +22,25 @@ vcpkg_cmake_configure(
         -DNCNN_BUILD_EXAMPLES=OFF
         -DNCNN_BUILD_BENCHMARK=OFF
         -DNCNN_SHARED_LIB=${BUILD_SHARED}
-        -DCMAKE_INSTALL_INCLUDEDIR=include
 )
 
 vcpkg_cmake_install()
 
 vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/ncnn)
+
+set(NCNN_CONFIG_PATH "${CURRENT_PACKAGES_DIR}/share/ncnn/ncnn.cmake")
+
+file(READ "${NCNN_CONFIG_PATH}" NCNN_CONFIG_CONTENTS)
+string(
+  REPLACE
+  "INTERFACE_INCLUDE_DIRECTORIES \"\${_IMPORT_PREFIX}/include/ncnn\""
+  "INTERFACE_INCLUDE_DIRECTORIES \"\${_IMPORT_PREFIX}/include\""
+  NCNN_CONFIG_CONTENTS_MODIFIED
+  "${NCNN_CONFIG_CONTENTS}"
+)
+
+file(WRITE "${NCNN_CONFIG_PATH}" "${NCNN_CONFIG_CONTENTS_MODIFIED}")
+
 vcpkg_copy_pdbs()
 vcpkg_fixup_pkgconfig()
 
