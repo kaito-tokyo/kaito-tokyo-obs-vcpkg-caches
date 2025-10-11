@@ -24,12 +24,7 @@
       "name": "libuv",
       "platform": "windows | android"
     },
-    {
-      "name": "ncnn",
-      "features": [
-        "vulkan"
-      ]
-    },
+    "ncnn",
     "nlohmann-json",
     {
       "name": "opencv4",
