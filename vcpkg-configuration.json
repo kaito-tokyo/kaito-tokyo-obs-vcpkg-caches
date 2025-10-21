@@ -8,7 +8,7 @@
   "registries": [
     {
       "kind": "git",
-      "baseline": "",
+      "baseline": "abcdef1234567890abcdef1234567890abcdef12",
       "repository": "https://github.com/kaito-tokyo/kaito-tokyo-vcpkg-registry.git",
       "packages": [
         "libpng",

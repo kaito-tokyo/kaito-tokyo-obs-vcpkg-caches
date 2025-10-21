@@ -62,6 +62,11 @@ jobs:
           mono "$NUGET_PATH" setapikey "${{ secrets.GITHUB_TOKEN }}" \
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
+      - name: "Set vcpkg registry baseline"
+        run: |
+          jq '.registries[0].baseline = "${{ github.sha }}"' vcpkg-configuration.json > vcpkg-configuration.json.tmp
+          mv vcpkg-configuration.json.tmp vcpkg-configuration.json
+
       - name: "Build"
         run: "$VCPKG_ROOT/vcpkg install --triplet arm64-osx-obs"
 
@@ -98,6 +103,11 @@ jobs:
             -Password "${{ secrets.GITHUB_TOKEN }}"
           mono "$NUGET_PATH" setapikey "${{ secrets.GITHUB_TOKEN }}" \
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
+
+      - name: "Set vcpkg registry baseline"
+        run: |
+          jq '.registries[0].baseline = "${{ github.sha }}"' vcpkg-configuration.json > vcpkg-configuration.json.tmp
+          mv vcpkg-configuration.json.tmp vcpkg-configuration.json
 
       - name: "Build"
         run: "$VCPKG_ROOT/vcpkg install --triplet x64-osx-obs"
@@ -136,6 +146,13 @@ jobs:
           & $NUGET_EXE_PATH setapikey "${{ secrets.GITHUB_TOKEN }}" `
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
 
+      - name: "Set vcpkg registry baseline"
+        shell: pwsh
+        run: |
+          $json = Get-Content vcpkg-configuration.json | ConvertFrom-Json
+          $json.registries[0].baseline = "${{ github.sha }}"
+          $json | ConvertTo-Json -Depth 10 | Set-Content vcpkg-configuration.json
+
       - name: "Build"
         run: "$VCPKG_ROOT/vcpkg install --triplet x64-windows-static-md-obs"
 
@@ -172,6 +189,11 @@ jobs:
             -Password "${{ secrets.GITHUB_TOKEN }}"
           mono "$NUGET_PATH" setapikey "${{ secrets.GITHUB_TOKEN }}" \
             -Source "https://nuget.pkg.github.com/kaito-tokyo/index.json"
+
+      - name: "Set vcpkg registry baseline"
+        run: |
+          jq '.registries[0].baseline = "${{ github.sha }}"' vcpkg-configuration.json > vcpkg-configuration.json.tmp
+          mv vcpkg-configuration.json.tmp vcpkg-configuration.json
 
       - name: "Build"
         run: "$VCPKG_ROOT/vcpkg install --triplet x64-linux-obs"
