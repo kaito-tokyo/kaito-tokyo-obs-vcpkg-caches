@@ -1,12 +1,9 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO kkm000/openfst
-    REF 805841777a283c523ce17ad4efdb3ada776c4862
-    SHA512 399162cbb9f37f4df7c4b0fb6d23e6a5e8737d8a1e92647eb6734c0ec11b7ae749a24a789ce43003a013c9d0a34addbbdb63da2f302a03d34cd3d8d5ab4540f3
-    HEAD_REF winport
-    PATCHES
-        0000-disable-tests.patch
-        0001-fix-bitable.patch
+    REPO kaito-tokyo/openfst-vosk
+    REF b65b57c8f60f275a26784913fe0ffe86e4e6d116
+    SHA512 b2a0ca1cd932652d3985de6d1babcd61f2a9223981be5517d7b76cf772867da43badd446ea49535baa2538dde40b9b9028fe00caa8e114faeeb72cec2669d3dc
+    HEAD_REF develop
 )
 
 string(COMPARE EQUAL "${VCPKG_LIBRARY_LINKAGE}" "dynamic" BUILD_SHARED)
