@@ -2,7 +2,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO kaito-tokyo/openfst-vosk
     REF develop
-    SHA512 be7b93eb5574ffc7c5e5e014d6531995c51bdab468467979a76e52bbcf2568618418f95372d0d4ba839ea20f20aca31e74338e81a7f4ac3f84637ddc29cf9c11
+    SHA512 2498a59cabbc0350682c4de244d5aab06ec3ce0c267fbee0fa01b88b60f47ddf045a55daac76debd8bef53fcd5ad385be2648aca250c9b39d2fc7d9861d82273
     HEAD_REF develop
 )
 
