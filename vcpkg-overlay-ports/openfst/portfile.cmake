@@ -37,7 +37,7 @@ file(MAKE_DIRECTORY
     ${CURRENT_PACKAGES_DIR}/share/unofficial-openfst
     ${CURRENT_PACKAGES_DIR}/debug/share/unofficial-openfst
 )
-file(COPY "${CURRENT_PORT_DIR}/unofficial-openfst-config.cmake" DESTINATION "${CURRENT_PACKAGES_DIR}/share/unofficial-openfst/unofficial-openfst-config.cmake")
+file(COPY "${CURRENT_PORT_DIR}/unofficial-openfst-config.cmake" DESTINATION "${CURRENT_PACKAGES_DIR}/share/unofficial-openfst/")
 vcpkg_cmake_config_fixup(PACKAGE_NAME unofficial-openfst)
 
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
