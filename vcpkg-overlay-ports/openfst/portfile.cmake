@@ -33,7 +33,13 @@ vcpkg_cmake_configure(
 
 vcpkg_cmake_install()
 
-vcpkg_cmake_config_fixup(PACKAGE_NAME openfst)
-vcpkg_fixup_pkgconfig(PACKAGE_NAME openfst)
+file(MAKE_DIRECTORY
+    ${CURRENT_PACKAGES_DIR}/share/unofficial-openfst
+    ${CURRENT_PACKAGES_DIR}/debug/share/unofficial-openfst
+)
+file(COPY "${CURRENT_PORT_DIR}/unofficial-openfst-config.cmake" DESTINATION "${CURRENT_PACKAGES_DIR}/share/unofficial-openfst/unofficial-openfst-config.cmake")
+vcpkg_cmake_config_fixup(PACKAGE_NAME unofficial-openfst)
+
+file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 
 vcpkg_install_copyright(FILE_LIST ${SOURCE_PATH}/COPYING)
