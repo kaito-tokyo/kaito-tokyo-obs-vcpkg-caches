@@ -33,7 +33,7 @@ vcpkg_cmake_configure(
 
 vcpkg_cmake_install()
 
-vcpkg_cmake_config_fixup(PACKAGE_NAME openfst CONFIG_PATH lib/cmake/openfst)
+vcpkg_cmake_config_fixup(PACKAGE_NAME openfst)
 vcpkg_fixup_pkgconfig(PACKAGE_NAME openfst)
 
 vcpkg_install_copyright(FILE_LIST ${SOURCE_PATH}/COPYING)
