@@ -36,6 +36,7 @@
         "webp"
       ]
     },
+    "openfst-vosk",
     "stb",
     "tesseract",
     {
@@ -43,7 +44,6 @@
       "features": [
         "zlib"
       ]
-    },
-    "openfst-vosk"
+    }
   ]
 }
