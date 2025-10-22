@@ -9,6 +9,7 @@ if(NOT TARGET unofficial::OpenFst::fst)
 
     set_property(TARGET unofficial::OpenFst::fst PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/../../include")
     set_property(TARGET unofficial::OpenFst::fst PROPERTY INTERFACE_COMPILE_FEATURES "cxx_std_11")
+    set_property(TARGET unofficial::OpenFst::fst PROPERTY INTERFACE_COMPILE_DEFINITIONS "NOMINMAX")
 endif()
 
 if(NOT TARGET unofficial::OpenFst::fstscript)
@@ -21,6 +22,8 @@ if(NOT TARGET unofficial::OpenFst::fstscript)
     set_property(TARGET unofficial::OpenFst::fstscript PROPERTY IMPORTED_LOCATION_DEBUG "${CMAKE_CURRENT_LIST_DIR}/../../debug/lib/libfstscript.a")
 
     set_property(TARGET unofficial::OpenFst::fstscript PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_LIST_DIR}/../../include")
+    set_property(TARGET unofficial::OpenFst::fstscript PROPERTY INTERFACE_COMPILE_FEATURES "cxx_std_11")
+    set_property(TARGET unofficial::OpenFst::fstscript PROPERTY INTERFACE_COMPILE_DEFINITIONS "NOMINMAX")
 endif()
 
 if(NOT TARGET unofficial::OpenFst::OpenFst)
