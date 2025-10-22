@@ -9,21 +9,24 @@ vcpkg_from_github(
         0001-fix-bitable.patch
 )
 
+string(COMPARE EQUAL "${VCPKG_LIBRARY_LINKAGE}" "dynamic" BUILD_SHARED)
+
 vcpkg_cmake_configure(
     SOURCE_PATH ${SOURCE_PATH}
     OPTIONS
-        -DHAVE_BIN=ON
+        -DBUILD_SHARED_LIBS=${BUILD_SHARED}
+        -DHAVE_BIN=OFF
         -DHAVE_SCRIPT=OFF
         -DHAVE_COMPACT=OFF
         -DHAVE_COMPRESS=OFF
         -DHAVE_CONST=OFF
-        -DHAVE_FAR=OFF
+        -DHAVE_FAR=ON
         -DHAVE_GRM=OFF
         -DHAVE_PDT=OFF
         -DHAVE_MPDT=OFF
         -DHAVE_LINEAR=OFF
-        -DHAVE_LOOKAHEAD=OFF
-        -DHAVE_NGRAM=OFF
+        -DHAVE_LOOKAHEAD=ON
+        -DHAVE_NGRAM=ON
         -DHAVE_PYTHON=OFF
         -DHAVE_SPECIAL=OFF
 )
