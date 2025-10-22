@@ -20,17 +20,26 @@ vcpkg_cmake_configure(
         -DHAVE_COMPACT=OFF
         -DHAVE_COMPRESS=OFF
         -DHAVE_CONST=OFF
-        -DHAVE_FAR=ON
+        -DHAVE_FAR=OFF
         -DHAVE_GRM=OFF
         -DHAVE_PDT=OFF
         -DHAVE_MPDT=OFF
         -DHAVE_LINEAR=OFF
-        -DHAVE_LOOKAHEAD=ON
-        -DHAVE_NGRAM=ON
+        -DHAVE_LOOKAHEAD=OFF
+        -DHAVE_NGRAM=OFF
         -DHAVE_PYTHON=OFF
         -DHAVE_SPECIAL=OFF
 )
 
 vcpkg_cmake_install()
+
+file(MAKE_DIRECTORY
+    ${CURRENT_PACKAGES_DIR}/share/unofficial-openfst
+    ${CURRENT_PACKAGES_DIR}/debug/share/unofficial-openfst
+)
+file(COPY "${CURRENT_PORT_DIR}/unofficial-openfst-config.cmake" DESTINATION "${CURRENT_PACKAGES_DIR}/share/unofficial-openfst/unofficial-openfst-config.cmake")
+vcpkg_cmake_config_fixup(PACKAGE_NAME unofficial-openfst)
+
+file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 
 vcpkg_install_copyright(FILE_LIST ${SOURCE_PATH}/COPYING)

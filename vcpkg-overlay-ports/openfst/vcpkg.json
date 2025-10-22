@@ -1,5 +1,5 @@
 {
-  "name": "openfst-vosk",
+  "name": "openfst",
   "version-string": "1.7.2",
   "description": "OpenFST: Weighted finite-state transducer library.",
   "homepage": "https://github.com/kkm000/openfst",
