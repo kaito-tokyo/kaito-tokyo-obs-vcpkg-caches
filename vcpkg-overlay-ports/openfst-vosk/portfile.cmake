@@ -2,7 +2,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO kkm000/openfst
     REF 805841777a283c523ce17ad4efdb3ada776c4862
-    SHA512 f3aa1a5fe16e241522c6a595442393e9086c1e5ff0cba6ecf6c3427d52bdb0261c839cb7ff8697653a70b6b6e97042dae7a26311ee86ed3b7400bd2d5ffbc138
+    SHA512 399162cbb9f37f4df7c4b0fb6d23e6a5e8737d8a1e92647eb6734c0ec11b7ae749a24a789ce43003a013c9d0a34addbbdb63da2f302a03d34cd3d8d5ab4540f3
     HEAD_REF winport
     PATCHES
         0000-disable-tests.patch
