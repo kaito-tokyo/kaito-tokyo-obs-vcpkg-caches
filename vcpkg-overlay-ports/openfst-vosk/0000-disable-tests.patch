@@ -1,0 +1,11 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index acc4bf1..d091f6c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -13,6 +13,3 @@ if(HAVE_BIN)
+ endif(HAVE_BIN)
+ 
+ add_subdirectory(extensions)
+-
+-enable_testing()
+-add_subdirectory(test)
