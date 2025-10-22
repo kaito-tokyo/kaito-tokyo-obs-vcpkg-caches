@@ -1,29 +1,29 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO kkm000/openfst
-    REF win/1.7.2.1
-    SHA512 884d98eca7721dbe297dd376fcbda507e3d242a819ed39f95eebfc3285cb97b10b3aa9969ddcf42af38396311fef9b65bc60ebe50222026e262d28e4ccedde39
-    HEAD_REF master
-    PATCHES
-        0000-disable-tests.patch
-        0001-fix-bitable.patch
+    REPO kaito-tokyo/openfst-vosk
+    REF develop
+    SHA512 be7b93eb5574ffc7c5e5e014d6531995c51bdab468467979a76e52bbcf2568618418f95372d0d4ba839ea20f20aca31e74338e81a7f4ac3f84637ddc29cf9c11
+    HEAD_REF develop
 )
+
+string(COMPARE EQUAL "${VCPKG_LIBRARY_LINKAGE}" "dynamic" BUILD_SHARED)
 
 vcpkg_cmake_configure(
     SOURCE_PATH ${SOURCE_PATH}
     OPTIONS
-        -DHAVE_BIN=ON
+        -DBUILD_SHARED_LIBS=${BUILD_SHARED}
+        -DHAVE_BIN=OFF
         -DHAVE_SCRIPT=OFF
         -DHAVE_COMPACT=OFF
         -DHAVE_COMPRESS=OFF
         -DHAVE_CONST=OFF
-        -DHAVE_FAR=OFF
+        -DHAVE_FAR=ON
         -DHAVE_GRM=OFF
         -DHAVE_PDT=OFF
         -DHAVE_MPDT=OFF
         -DHAVE_LINEAR=OFF
-        -DHAVE_LOOKAHEAD=OFF
-        -DHAVE_NGRAM=OFF
+        -DHAVE_LOOKAHEAD=ON
+        -DHAVE_NGRAM=ON
         -DHAVE_PYTHON=OFF
         -DHAVE_SPECIAL=OFF
 )
