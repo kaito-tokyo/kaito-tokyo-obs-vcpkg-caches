@@ -36,7 +36,7 @@
         "webp"
       ]
     },
-    "openfst-vosk",
+    "openfst",
     "stb",
     "tesseract",
     {
