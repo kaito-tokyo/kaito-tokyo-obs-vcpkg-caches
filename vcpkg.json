@@ -1,49 +1,5 @@
 {
   "dependencies": [
-    "backward-cpp",
-    {
-      "name": "curl",
-      "default-features": false,
-      "features": [
-        "ssl"
-      ],
-      "platform": "(windows & !uwp) | mingw"
-    },
-    {
-      "name": "curl",
-      "default-features": false,
-      "features": [
-        "wolfssl"
-      ],
-      "platform": "(uwp | !windows) & !mingw"
-    },
-    "fmt",
-    "gtest",
-    "leptonica",
-    {
-      "name": "libuv",
-      "platform": "windows | android"
-    },
-    "ncnn",
-    "nlohmann-json",
-    {
-      "name": "opencv4",
-      "default-features": false,
-      "features": [
-        "jpeg",
-        "png",
-        "tiff",
-        "webp"
-      ]
-    },
-    "openfst-vosk",
-    "stb",
-    "tesseract",
-    {
-      "name": "uwebsockets",
-      "features": [
-        "zlib"
-      ]
-    }
+    "openfst-vosk"
   ]
 }
