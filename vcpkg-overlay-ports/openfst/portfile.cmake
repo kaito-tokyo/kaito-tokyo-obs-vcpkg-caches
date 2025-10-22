@@ -20,13 +20,13 @@ vcpkg_cmake_configure(
         -DHAVE_COMPACT=OFF
         -DHAVE_COMPRESS=OFF
         -DHAVE_CONST=OFF
-        -DHAVE_FAR=ON
+        -DHAVE_FAR=OFF
         -DHAVE_GRM=OFF
         -DHAVE_PDT=OFF
         -DHAVE_MPDT=OFF
         -DHAVE_LINEAR=OFF
-        -DHAVE_LOOKAHEAD=ON
-        -DHAVE_NGRAM=ON
+        -DHAVE_LOOKAHEAD=OFF
+        -DHAVE_NGRAM=OFF
         -DHAVE_PYTHON=OFF
         -DHAVE_SPECIAL=OFF
 )
