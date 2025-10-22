@@ -30,4 +30,4 @@ vcpkg_cmake_configure(
 
 vcpkg_cmake_install()
 
-vcpkg_install_copyright(FILE_PATH ${SOURCE_PATH}/COPYING)
+vcpkg_install_copyright(FILE_LIST ${SOURCE_PATH}/COPYING)
