@@ -1,7 +1,0 @@
-{
-  "name": "openfst",
-  "version-string": "1.8.2",
-  "description": "OpenFST: Weighted finite-state transducer library.",
-  "homepage": "https://github.com/kkm000/openfst",
-  "license": "Apache-2.0"
-}
