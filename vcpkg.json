@@ -37,6 +37,7 @@
       ]
     },
     "openfst",
+    "openfst",
     "stb",
     "tesseract",
     {
@@ -44,7 +45,6 @@
       "features": [
         "zlib"
       ]
-    },
-    "vosk-api"
+    }
   ]
 }
