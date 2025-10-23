@@ -5,10 +5,7 @@ vcpkg_from_github(
     SHA512 936402c3070a417cb32c774f1dc628f80b8bda39d029d266e0d2a212b475a35a030d5fa8ae3bdba90f28d594309c6bf76489e8e54e2a34e47a23612e46704931
     HEAD_REF vosk
     PATCHES
-        0000-getversion-outside-git.patch
-        0001-link-to-unsupported-openfst.patch
-        0002-fix-cmake-config-dependency.patch
-        0003-fix-cmake-file-path.patch
+        0000-fix-for-vcpkg.patch
 )
 
 string(COMPARE EQUAL "${VCPKG_LIBRARY_LINKAGE}" "dynamic" BUILD_SHARED)
