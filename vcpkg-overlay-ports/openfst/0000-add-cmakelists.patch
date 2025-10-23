@@ -613,7 +613,7 @@ index 0000000..c4f4807
 +)
 diff --git a/src/extensions/mpdt/CMakeLists.txt b/src/extensions/mpdt/CMakeLists.txt
 new file mode 100644
-index 0000000..80d6ed4
+index 0000000..1ef6ba6
 --- /dev/null
 +++ b/src/extensions/mpdt/CMakeLists.txt
 @@ -0,0 +1,68 @@
@@ -625,25 +625,25 @@ index 0000000..80d6ed4
 +# ------------------------------------------------------------------
 +# Library: mpdtscript (corresponds to libfstmpdtscript.la)
 +# ------------------------------------------------------------------
-+add_library(mpdtscript
++add_library(fstmpdtscript
 +    mpdtscript.cc
 +)
 +
 +# Set version information (corresponds to Makefile.am's -version-info 23:0:0)
-+set_target_properties(mpdtscript PROPERTIES
++set_target_properties(fstmpdtscript PROPERTIES
 +    VERSION "${OPENFST_VERSION}"
 +    SOVERSION "${OPENFST_SOVERSION}"
 +)
 +
 +# Add headers for IDE integration
-+target_sources(mpdtscript PRIVATE ${MPDT_HEADERS})
++target_sources(fstmpdtscript PRIVATE ${MPDT_HEADERS})
 +
 +# Dependencies (corresponds to Makefile.am's libfstmpdtscript_la_LIBADD)
 +# fstscript inherits fst, m, dl
-+target_link_libraries(mpdtscript PUBLIC fstscript)
++target_link_libraries(fstmpdtscript PUBLIC fstscript)
 +
 +# Install the library and add it to the 'fst-targets' export set
-+install(TARGETS mpdtscript
++install(TARGETS fstmpdtscript
 +    EXPORT fst-targets
 +    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 +    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
