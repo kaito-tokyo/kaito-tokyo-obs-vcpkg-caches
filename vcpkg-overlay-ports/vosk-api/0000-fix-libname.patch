@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b754f1e..2cb5f5c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,7 +14,7 @@ add_library(vosk
+ )
+ 
+ find_package(kaldi REQUIRED)
+-target_link_libraries(vosk PUBLIC kaldi-base kaldi-online2 kaldi-rnnlm fstngram)
++target_link_libraries(vosk PUBLIC kaldi-base kaldi-online2 kaldi-rnnlm OpenFst::fstngram)
+ 
+ include(GNUInstallDirs)
+ install(TARGETS vosk DESTINATION ${CMAKE_INSTALL_LIBDIR})
