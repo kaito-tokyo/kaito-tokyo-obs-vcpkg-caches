@@ -23,4 +23,6 @@ vcpkg_cmake_install()
 file(MAKE_DIRECTORY ${CURRENT_PACKAGES_DIR}/share/openfst ${CURRENT_PACKAGES_DIR}/debug/share/openfst)
 vcpkg_cmake_config_fixup()
 
+file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include)
+
 vcpkg_install_copyright(FILE_LIST ${SOURCE_PATH}/COPYING)
