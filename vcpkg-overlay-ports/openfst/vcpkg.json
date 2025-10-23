@@ -1,8 +1,8 @@
 {
   "name": "openfst",
-  "version-string": "1.7.2",
+  "version-string": "1.8.0",
   "description": "OpenFST: Weighted finite-state transducer library.",
-  "homepage": "https://github.com/kkm000/openfst",
+  "homepage": "https://github.com/alphacep/openfst",
   "license": "Apache-2.0",
   "dependencies": [
     {
