@@ -491,15 +491,15 @@ index d9211a1..7f1a079 100644
    std::string usage = "Converts FST and container types.\n\n Usage:";
 diff --git a/src/extensions/linear/CMakeLists.txt b/src/extensions/linear/CMakeLists.txt
 new file mode 100644
-index 0000000..d0451d3
+index 0000000..9c832e7
 --- /dev/null
 +++ b/src/extensions/linear/CMakeLists.txt
 @@ -0,0 +1,94 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/linear' (for IDE integration)
-+file(GLOB_RECURSE LINEAR_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/linear/*.h)
-+file(GLOB_RECURSE LINEAR_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/linear/*.inc)
++file(GLOB_RECURSE LINEAR_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/linear/*.h)
++file(GLOB_RECURSE LINEAR_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/linear/*.inc)
 +set(LINEAR_HEADERS ${LINEAR_HEADERS_H} ${LINEAR_HEADERS_INC})
 +
 +# ------------------------------------------------------------------
@@ -591,14 +591,14 @@ index 0000000..d0451d3
 +endif()
 diff --git a/src/extensions/lookahead/CMakeLists.txt b/src/extensions/lookahead/CMakeLists.txt
 new file mode 100644
-index 0000000..f06564a
+index 0000000..b4be6e0
 --- /dev/null
 +++ b/src/extensions/lookahead/CMakeLists.txt
 @@ -0,0 +1,33 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/lookahead' (for IDE integration)
-+file(GLOB_RECURSE LOOKAHEAD_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/lookahead/*.h)
++file(GLOB_RECURSE LOOKAHEAD_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/lookahead/*.h)
 +set(LOOKAHEAD_HEADERS ${LOOKAHEAD_HEADERS_H})
 +
 +# Target: fstlookahead (corresponds to libfstlookahead.la)
@@ -630,15 +630,15 @@ index 0000000..f06564a
 +)
 diff --git a/src/extensions/mpdt/CMakeLists.txt b/src/extensions/mpdt/CMakeLists.txt
 new file mode 100644
-index 0000000..7d70cce
+index 0000000..0bc0f88
 --- /dev/null
 +++ b/src/extensions/mpdt/CMakeLists.txt
 @@ -0,0 +1,70 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/mpdt' (for IDE integration)
-+file(GLOB_RECURSE MPDT_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/mpdt/*.h)
-+file(GLOB_RECURSE MPDT_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/mpdt/*.inc)
++file(GLOB_RECURSE MPDT_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/mpdt/*.h)
++file(GLOB_RECURSE MPDT_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/mpdt/*.inc)
 +set(MPDT_HEADERS ${MPDT_HEADERS_H} ${MPDT_HEADERS_INC})
 +
 +# ------------------------------------------------------------------
@@ -706,15 +706,15 @@ index 0000000..7d70cce
 +endif()
 diff --git a/src/extensions/ngram/CMakeLists.txt b/src/extensions/ngram/CMakeLists.txt
 new file mode 100644
-index 0000000..04286df
+index 0000000..081cfda
 --- /dev/null
 +++ b/src/extensions/ngram/CMakeLists.txt
 @@ -0,0 +1,34 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/ngram' (for IDE integration)
-+file(GLOB_RECURSE NGRAM_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/ngram/*.h)
-+file(GLOB_RECURSE NGRAM_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/ngram/*.inc)
++file(GLOB_RECURSE NGRAM_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/ngram/*.h)
++file(GLOB_RECURSE NGRAM_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/ngram/*.inc)
 +set(NGRAM_HEADERS ${NGRAM_HEADERS_H} ${NGRAM_HEADERS_INC})
 +
 +# Target: ngram (corresponds to libfstngram.la)
@@ -805,15 +805,15 @@ index f1a139d..5a83051 100644
      if (enable_select_0_index) {
 diff --git a/src/extensions/pdt/CMakeLists.txt b/src/extensions/pdt/CMakeLists.txt
 new file mode 100644
-index 0000000..00de510
+index 0000000..feb7383
 --- /dev/null
 +++ b/src/extensions/pdt/CMakeLists.txt
 @@ -0,0 +1,71 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/pdt' (for IDE integration)
-+file(GLOB_RECURSE PDT_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/pdt/*.h)
-+file(GLOB_RECURSE PDT_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/pdt/*.inc)
++file(GLOB_RECURSE PDT_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/pdt/*.h)
++file(GLOB_RECURSE PDT_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/pdt/*.inc)
 +set(PDT_HEADERS ${PDT_HEADERS_H} ${PDT_HEADERS_INC})
 +
 +# ------------------------------------------------------------------
@@ -882,15 +882,15 @@ index 0000000..00de510
 +endif()
 diff --git a/src/extensions/special/CMakeLists.txt b/src/extensions/special/CMakeLists.txt
 new file mode 100644
-index 0000000..0151fd1
+index 0000000..f0269f0
 --- /dev/null
 +++ b/src/extensions/special/CMakeLists.txt
 @@ -0,0 +1,72 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/special' (for IDE integration)
-+file(GLOB_RECURSE SPECIAL_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/special/*.h)
-+file(GLOB_RECURSE SPECIAL_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../include/fst/extensions/special/*.inc)
++file(GLOB_RECURSE SPECIAL_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/special/*.h)
++file(GLOB_RECURSE SPECIAL_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/special/*.inc)
 +set(SPECIAL_HEADERS ${SPECIAL_HEADERS_H} ${SPECIAL_HEADERS_INC})
 +
 +# ------------------------------------------------------------------
@@ -959,7 +959,7 @@ index 0000000..0151fd1
 +
 +endif()
 diff --git a/src/include/fst/extensions/far/compile-strings.h b/src/include/fst/extensions/far/compile-strings.h
-index 881b0c3..f3a5bc0 100644
+index 881b0c3..5a5d726 100644
 --- a/src/include/fst/extensions/far/compile-strings.h
 +++ b/src/include/fst/extensions/far/compile-strings.h
 @@ -18,7 +18,9 @@
@@ -981,7 +981,7 @@ index 881b0c3..f3a5bc0 100644
 +    static char dot[] = ".";
 +    static char slash[] = "/";
 +
-+    char* last_sep = NULL;
++    char* last_sep = nullptr;
 +    char* p;
 +
 +    if (!path || *path == '\0') {
@@ -1002,7 +1002,7 @@ index 881b0c3..f3a5bc0 100644
 +        p++;
 +    }
 +
-+    if (last_sep == NULL) {
++    if (last_sep == nullptr) {
 +        if (path[0] != '\0' && path[1] == ':' && path[2] == '\0') {
 +            return slash;
 +        }
@@ -1034,7 +1034,7 @@ index 881b0c3..f3a5bc0 100644
            key += "-";
            key += keybuf.str();
 diff --git a/src/include/fst/extensions/far/create.h b/src/include/fst/extensions/far/create.h
-index 29f886f..aca838f 100644
+index 29f886f..b85a11c 100644
 --- a/src/include/fst/extensions/far/create.h
 +++ b/src/include/fst/extensions/far/create.h
 @@ -20,7 +20,9 @@
@@ -1056,7 +1056,7 @@ index 29f886f..aca838f 100644
 +    static char dot[] = ".";
 +    static char slash[] = "/";
 +
-+    char* last_sep = NULL;
++    char* last_sep = nullptr;
 +    char* p;
 +
 +    if (!path || *path == '\0') {
@@ -1077,7 +1077,7 @@ index 29f886f..aca838f 100644
 +        p++;
 +    }
 +
-+    if (last_sep == NULL) {
++    if (last_sep == nullptr) {
 +        if (path[0] != '\0' && path[1] == ':' && path[2] == '\0') {
 +            return slash;
 +        }
