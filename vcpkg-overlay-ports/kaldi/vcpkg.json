@@ -1,0 +1,22 @@
+{
+  "name": "kaldi",
+  "version-string": "master",
+  "description": "Kaldi speech recognition toolkit (Vosk fork)",
+  "homepage": "https://github.com/alphacep/kaldi",
+  "dependencies": [
+    "clapack",
+    {
+      "name": "openblas",
+      "platform": "!osx"
+    },
+    "openfst",
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e0ca3ea28..bbf5ad578 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -226,7 +226,8 @@ endif()
+ #            PATHS "${CMAKE_CURRENT_SOURCE_DIR}/tools/openfst/include"
+ #            REQUIRED)
+ 
+-link_libraries(fst)
++find_package(unofficial-openfst REQUIRED)
++link_libraries(unofficial::OpenFst::fst)
+ 
+ # add all native libraries
+ add_subdirectory(src/base) # NOTE, we need to patch the target with version from outside

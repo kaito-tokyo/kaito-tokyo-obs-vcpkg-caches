@@ -19,6 +19,7 @@
     },
     "fmt",
     "gtest",
+    "kaldi",
     "leptonica",
     {
       "name": "libuv",
