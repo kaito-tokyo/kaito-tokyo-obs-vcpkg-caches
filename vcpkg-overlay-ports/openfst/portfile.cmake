@@ -15,6 +15,7 @@ vcpkg_cmake_configure(
     OPTIONS
         -DBUILD_SHARED_LIBS=${BUILD_SHARED}
         -DOPENFST_BUILD_BIN=OFF
+        -DOPENFST_HAS_ABSL=ON
 )
 
 vcpkg_cmake_install()

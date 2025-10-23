@@ -5,6 +5,7 @@
   "homepage": "https://github.com/alphacep/openfst",
   "license": "Apache-2.0",
   "dependencies": [
+    "abseil",
     {
       "name": "vcpkg-cmake",
       "host": true
