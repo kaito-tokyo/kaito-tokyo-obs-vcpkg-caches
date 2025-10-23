@@ -19,6 +19,7 @@
     },
     "fmt",
     "gtest",
+    "kaldi",
     "leptonica",
     {
       "name": "libuv",
@@ -36,8 +37,6 @@
         "webp"
       ]
     },
-    "openfst",
-    "openfst",
     "stb",
     "tesseract",
     {
