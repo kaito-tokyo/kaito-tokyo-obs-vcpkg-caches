@@ -7,8 +7,8 @@ index e0ca3ea28..bbf5ad578 100644
  #            REQUIRED)
  
 -link_libraries(fst)
-+find_package(unofficial-openfst REQUIRED)
-+link_libraries(unofficial::OpenFst::fst)
++find_package(OpenFst REQUIRED)
++link_libraries(OpenFst::fst OpenFst::fstfar OpenFst::fstngram OpenFst::fstlookahead)
  
  # add all native libraries
  add_subdirectory(src/base) # NOTE, we need to patch the target with version from outside
