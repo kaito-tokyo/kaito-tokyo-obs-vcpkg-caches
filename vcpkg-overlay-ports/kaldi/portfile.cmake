@@ -21,10 +21,18 @@ vcpkg_cmake_configure(
 
 vcpkg_cmake_install()
 
-file(MAKE_DIRECTORY
-    ${CURRENT_PACKAGES_DIR}/share/kaldi
-    ${CURRENT_PACKAGES_DIR}/debug/share/kaldi
-)
+file(MAKE_DIRECTORY ${CURRENT_PACKAGES_DIR}/share/kaldi ${CURRENT_PACKAGES_DIR}/debug/share/kaldi)
+
+set(KALDI_TARGETS_FILE "${CURRENT_PACKAGES_DIR}/lib/cmake/kaldi/kaldi-targets.cmake")
+if(EXISTS "${KALDI_TARGETS_FILE}")
+  file(READ "${KALDI_TARGETS_FILE}" _kaldi_targets_content)
+  file(
+    WRITE
+    "${KALDI_TARGETS_FILE}"
+    "include(CMakeFindDependencyMacro)\nfind_dependency(unsupported-openfst)\n${_kaldi_targets_content}"
+  )
+endif()
+
 vcpkg_cmake_config_fixup()
 
 vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/COPYING")
