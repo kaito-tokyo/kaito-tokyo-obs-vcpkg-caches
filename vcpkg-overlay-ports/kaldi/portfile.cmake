@@ -7,7 +7,8 @@ vcpkg_from_github(
     PATCHES
         0000-getversion-outside-git.patch
         0001-link-to-unsupported-openfst.patch
-        0002-fix-cmake-file-path.patch
+        0002-fix-cmake-config-dependency.patch
+        0003-fix-cmake-file-path.patch
 )
 
 string(COMPARE EQUAL "${VCPKG_LIBRARY_LINKAGE}" "dynamic" BUILD_SHARED)
