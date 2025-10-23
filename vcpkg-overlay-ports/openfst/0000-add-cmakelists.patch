@@ -72,7 +72,7 @@ index 0000000..0e594e2
 +include("${CMAKE_CURRENT_LIST_DIR}/fst-targets.cmake")
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 new file mode 100644
-index 0000000..13fbd22
+index 0000000..426cc40
 --- /dev/null
 +++ b/src/CMakeLists.txt
 @@ -0,0 +1,49 @@
@@ -108,14 +108,14 @@ index 0000000..13fbd22
 +    EXPORT fst-targets
 +    FILE fst-targets.cmake
 +    NAMESPACE OpenFst::
-+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openfst
++    DESTINATION ${CMAKE_INSTALL_DATADIR}/openfst
 +)
 +
 +# Generate 'OpenFstConfig.cmake' from the 'OpenFstConfig.cmake.in' template
 +configure_package_config_file(
 +    ${CMAKE_SOURCE_DIR}/cmake/OpenFstConfig.cmake.in
 +    ${CMAKE_CURRENT_BINARY_DIR}/OpenFstConfig.cmake
-+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openfst
++    INSTALL_DESTINATION ${CMAKE_INSTALL_DATADIR}/openfst
 +    # Pass variables used by @PACKAGE_INIT@ in OpenFstConfig.cmake.in
 +    PATH_VARS CMAKE_INSTALL_INCLUDEDIR CMAKE_INSTALL_LIBDIR
 +)
@@ -123,7 +123,7 @@ index 0000000..13fbd22
 +# Install the generated 'OpenFstConfig.cmake'
 +install(
 +    FILES ${CMAKE_CURRENT_BINARY_DIR}/OpenFstConfig.cmake
-+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openfst
++    DESTINATION ${CMAKE_INSTALL_DATADIR}/openfst
 +)
 diff --git a/src/bin/CMakeLists.txt b/src/bin/CMakeLists.txt
 new file mode 100644
@@ -220,60 +220,48 @@ index 0000000..cb451d1
 +add_subdirectory(special)
 diff --git a/src/extensions/compact/CMakeLists.txt b/src/extensions/compact/CMakeLists.txt
 new file mode 100644
-index 0000000..5d15558
+index 0000000..ddde6b4
 --- /dev/null
 +++ b/src/extensions/compact/CMakeLists.txt
-@@ -0,0 +1,47 @@
+@@ -0,0 +1,35 @@
 +# Extension: Compact
-+
-+set(COMPACT_TYPES
-+    compact16_acceptor
-+    compact16_string
-+    compact16_unweighted
-+    compact16_unweighted_acceptor
-+    compact16_weighted_string
-+    compact64_acceptor
-+    compact64_string
-+    compact64_unweighted
-+    compact64_unweighted_acceptor
-+    compact64_weighted_string
-+    compact8_acceptor
-+    compact8_string
-+    compact8_unweighted
-+    compact8_unweighted_acceptor
-+    compact8_weighted_string
-+)
 +
 +# Include GNUInstallDirs to access CMAKE_INSTALL_LIBDIR and related variables
 +include(GNUInstallDirs)
 +
-+# Define all Compact libraries in a loop
-+foreach(type IN LISTS COMPACT_TYPES)
-+    # Define target (e.g., compact16_acceptor-fst)
-+    add_library(${type}-fst
-+        ${type}-fst.cc
-+    )
++add_library(fstcompact STATIC
++    compact16_acceptor-fst.cc
++    compact16_string-fst.cc
++    compact16_unweighted-fst.cc
++    compact16_unweighted_acceptor-fst.cc
++    compact16_weighted_string-fst.cc
++    compact64_acceptor-fst.cc
++    compact64_string-fst.cc
++    compact64_unweighted-fst.cc
++    compact64_unweighted_acceptor-fst.cc
++    compact64_weighted_string-fst.cc
++    compact8_acceptor-fst.cc
++    compact8_string-fst.cc
++    compact8_unweighted-fst.cc
++    compact8_unweighted_acceptor-fst.cc
++    compact8_weighted_string-fst.cc
++)
 +
-+    # Set version information (using variables defined in the root CMakeLists.txt)
-+    set_target_properties(${type}-fst PROPERTIES
-+        VERSION "${OPENFST_VERSION}"
-+        SOVERSION "${OPENFST_SOVERSION}"
-+    )
-+
-+    # Link to the main 'fst' library
-+    target_link_libraries(${type}-fst PUBLIC fst)
-+
-+    # Install the library and add it to the 'fst-targets' export set
-+    install(TARGETS ${type}-fst
-+        EXPORT fst-targets
-+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-+    )
-+endforeach()
++target_link_libraries(fstcompact PUBLIC fst)
++set_target_properties(fstcompact PROPERTIES
++    OUTPUT_NAME "fstcompact"
++    VERSION "${OPENFST_VERSION}"
++    SOVERSION "${OPENFST_SOVERSION}"
++)
++install(TARGETS fstcompact
++    EXPORT fst-targets
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++)
 diff --git a/src/extensions/compress/CMakeLists.txt b/src/extensions/compress/CMakeLists.txt
 new file mode 100644
-index 0000000..d310fbc
+index 0000000..a63a74f
 --- /dev/null
 +++ b/src/extensions/compress/CMakeLists.txt
 @@ -0,0 +1,58 @@
@@ -281,27 +269,27 @@ index 0000000..d310fbc
 +include(GNUInstallDirs)
 +
 +# Target: compressscript (corresponds to libfstcompressscript.la)
-+add_library(compressscript
++add_library(fstcompressscript
 +    compressscript.cc
 +)
 +
 +# Set version information (corresponds to Makefile.am's -version-info 23:0:0)
-+set_target_properties(compressscript PROPERTIES
++set_target_properties(fstcompressscript PROPERTIES
 +    VERSION "${OPENFST_VERSION}"
 +    SOVERSION "${OPENFST_SOVERSION}"
 +)
 +
 +# Add header for IDE integration (installation handled by src/lib/CMakeLists.txt glob)
-+target_sources(compressscript PRIVATE
++target_sources(fstcompressscript PRIVATE
 +    ../../include/fst/extensions/compress/compressscript.h
 +)
 +
 +# Dependencies (corresponds to Makefile.am's libfstcompressscript_la_LIBADD)
 +# fstscript inherits fst, m, dl
-+target_link_libraries(compressscript PUBLIC fstscript)
++target_link_libraries(fstcompressscript PUBLIC fstscript)
 +
 +# Install the library and add it to the 'fst-targets' export set
-+install(TARGETS compressscript
++install(TARGETS fstcompressscript
 +    EXPORT fst-targets
 +    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 +    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -369,16 +357,14 @@ index 0000000..a2d31e2
 +)
 diff --git a/src/extensions/far/CMakeLists.txt b/src/extensions/far/CMakeLists.txt
 new file mode 100644
-index 0000000..a7b9320
+index 0000000..70dc919
 --- /dev/null
 +++ b/src/extensions/far/CMakeLists.txt
-@@ -0,0 +1,103 @@
+@@ -0,0 +1,101 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/far' (for IDE integration)
-+file(GLOB_RECURSE FAR_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/far/*.h)
-+file(GLOB_RECURSE FAR_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/far/*.inc)
-+set(FAR_HEADERS ${FAR_HEADERS_H} ${FAR_HEADERS_INC})
++file(GLOB_RECURSE FAR_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/far/*.h)
 +
 +# ------------------------------------------------------------------
 +# Library: fstfar (corresponds to libfstfar.la)
@@ -491,16 +477,14 @@ index d9211a1..7f1a079 100644
    std::string usage = "Converts FST and container types.\n\n Usage:";
 diff --git a/src/extensions/linear/CMakeLists.txt b/src/extensions/linear/CMakeLists.txt
 new file mode 100644
-index 0000000..9c832e7
+index 0000000..dc6b9d2
 --- /dev/null
 +++ b/src/extensions/linear/CMakeLists.txt
-@@ -0,0 +1,94 @@
+@@ -0,0 +1,92 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/linear' (for IDE integration)
-+file(GLOB_RECURSE LINEAR_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/linear/*.h)
-+file(GLOB_RECURSE LINEAR_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/linear/*.inc)
-+set(LINEAR_HEADERS ${LINEAR_HEADERS_H} ${LINEAR_HEADERS_INC})
++file(GLOB_RECURSE LINEAR_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/linear/*.h)
 +
 +# ------------------------------------------------------------------
 +# Library: linear-fst (combines linear_tagger-fst.la and linear_classifier-fst.la)
@@ -591,15 +575,14 @@ index 0000000..9c832e7
 +endif()
 diff --git a/src/extensions/lookahead/CMakeLists.txt b/src/extensions/lookahead/CMakeLists.txt
 new file mode 100644
-index 0000000..b4be6e0
+index 0000000..c4f4807
 --- /dev/null
 +++ b/src/extensions/lookahead/CMakeLists.txt
-@@ -0,0 +1,33 @@
+@@ -0,0 +1,32 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/lookahead' (for IDE integration)
-+file(GLOB_RECURSE LOOKAHEAD_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/lookahead/*.h)
-+set(LOOKAHEAD_HEADERS ${LOOKAHEAD_HEADERS_H})
++file(GLOB_RECURSE LOOKAHEAD_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/lookahead/*.h)
 +
 +# Target: fstlookahead (corresponds to libfstlookahead.la)
 +add_library(fstlookahead
@@ -630,16 +613,14 @@ index 0000000..b4be6e0
 +)
 diff --git a/src/extensions/mpdt/CMakeLists.txt b/src/extensions/mpdt/CMakeLists.txt
 new file mode 100644
-index 0000000..0bc0f88
+index 0000000..80d6ed4
 --- /dev/null
 +++ b/src/extensions/mpdt/CMakeLists.txt
-@@ -0,0 +1,70 @@
+@@ -0,0 +1,68 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/mpdt' (for IDE integration)
-+file(GLOB_RECURSE MPDT_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/mpdt/*.h)
-+file(GLOB_RECURSE MPDT_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/mpdt/*.inc)
-+set(MPDT_HEADERS ${MPDT_HEADERS_H} ${MPDT_HEADERS_INC})
++file(GLOB_RECURSE MPDT_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/mpdt/*.h)
 +
 +# ------------------------------------------------------------------
 +# Library: mpdtscript (corresponds to libfstmpdtscript.la)
@@ -706,39 +687,37 @@ index 0000000..0bc0f88
 +endif()
 diff --git a/src/extensions/ngram/CMakeLists.txt b/src/extensions/ngram/CMakeLists.txt
 new file mode 100644
-index 0000000..081cfda
+index 0000000..2c56628
 --- /dev/null
 +++ b/src/extensions/ngram/CMakeLists.txt
-@@ -0,0 +1,34 @@
+@@ -0,0 +1,32 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/ngram' (for IDE integration)
-+file(GLOB_RECURSE NGRAM_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/ngram/*.h)
-+file(GLOB_RECURSE NGRAM_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/ngram/*.inc)
-+set(NGRAM_HEADERS ${NGRAM_HEADERS_H} ${NGRAM_HEADERS_INC})
++file(GLOB_RECURSE NGRAM_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/ngram/*.h)
 +
 +# Target: ngram (corresponds to libfstngram.la)
-+add_library(ngram
++add_library(fstngram
 +    bitmap-index.cc
 +    ngram-fst.cc
 +    nthbit.cc
 +)
 +
 +# Set version information (corresponds to Makefile.am's -version-info 23:0:0)
-+set_target_properties(ngram PROPERTIES
++set_target_properties(fstngram PROPERTIES
 +    VERSION "${OPENFST_VERSION}"
 +    SOVERSION "${OPENFST_SOVERSION}"
 +)
 +
 +# Add headers for IDE integration
-+target_sources(ngram PRIVATE ${NGRAM_HEADERS})
++target_sources(fstngram PRIVATE ${NGRAM_HEADERS})
 +
 +# Dependencies (corresponds to Makefile.am's LIBS)
 +# 'fst' target inherits dependencies from libfst.la, m, dl
-+target_link_libraries(ngram PUBLIC fst)
++target_link_libraries(fstngram PUBLIC fst)
 +
 +# Install the library and add it to the 'fst-targets' export set
-+install(TARGETS ngram
++install(TARGETS fstngram
 +    EXPORT fst-targets
 +    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 +    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -805,16 +784,14 @@ index f1a139d..5a83051 100644
      if (enable_select_0_index) {
 diff --git a/src/extensions/pdt/CMakeLists.txt b/src/extensions/pdt/CMakeLists.txt
 new file mode 100644
-index 0000000..feb7383
+index 0000000..4535b0c
 --- /dev/null
 +++ b/src/extensions/pdt/CMakeLists.txt
-@@ -0,0 +1,71 @@
+@@ -0,0 +1,69 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/pdt' (for IDE integration)
-+file(GLOB_RECURSE PDT_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/pdt/*.h)
-+file(GLOB_RECURSE PDT_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/pdt/*.inc)
-+set(PDT_HEADERS ${PDT_HEADERS_H} ${PDT_HEADERS_INC})
++file(GLOB_RECURSE PDT_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/pdt/*.h)
 +
 +# ------------------------------------------------------------------
 +# Library: pdtscript (corresponds to libfstpdtscript.la)
@@ -882,16 +859,14 @@ index 0000000..feb7383
 +endif()
 diff --git a/src/extensions/special/CMakeLists.txt b/src/extensions/special/CMakeLists.txt
 new file mode 100644
-index 0000000..f0269f0
+index 0000000..66d2018
 --- /dev/null
 +++ b/src/extensions/special/CMakeLists.txt
-@@ -0,0 +1,72 @@
+@@ -0,0 +1,70 @@
 +include(GNUInstallDirs)
 +
 +# Glob all headers under 'src/include/fst/extensions/special' (for IDE integration)
-+file(GLOB_RECURSE SPECIAL_HEADERS_H RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/special/*.h)
-+file(GLOB_RECURSE SPECIAL_HEADERS_INC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/special/*.inc)
-+set(SPECIAL_HEADERS ${SPECIAL_HEADERS_H} ${SPECIAL_HEADERS_INC})
++file(GLOB_RECURSE SPECIAL_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ../../include/fst/extensions/special/*.h)
 +
 +# ------------------------------------------------------------------
 +# Library: fstspecial (corresponds to libfstspecial.la)
