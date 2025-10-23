@@ -1166,10 +1166,10 @@ index f207cd9..50c8c22 100644
  #endif  // FST_LIB_TYPES_H_
 diff --git a/src/lib/CMakeLists.txt b/src/lib/CMakeLists.txt
 new file mode 100644
-index 0000000..3dc1c77
+index 0000000..9033df3
 --- /dev/null
 +++ b/src/lib/CMakeLists.txt
-@@ -0,0 +1,97 @@
+@@ -0,0 +1,103 @@
 +# Recursively glob all headers under 'src/include'
 +# Create a list of relative paths from CMAKE_CURRENT_SOURCE_DIR (src/lib)
 +file(
@@ -1191,6 +1191,12 @@ index 0000000..3dc1c77
 +    fst
 +    PROPERTIES VERSION "${OPENFST_VERSION}" SOVERSION "${OPENFST_SOVERSION}"
 +)
++
++# Add MSVC-specific compile options and definitions
++if(MSVC)
++    target_compile_options(fst PUBLIC /bigobj)
++    target_compile_definitions(fst PUBLIC NOMINMAX FST_NO_DYNAMIC_LINKING)
++endif()
 +
 +# Specify public headers (for IDE integration and installation)
 +target_sources(
