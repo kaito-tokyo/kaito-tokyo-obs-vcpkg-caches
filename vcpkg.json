@@ -19,7 +19,6 @@
     },
     "fmt",
     "gtest",
-    "kaldi",
     "leptonica",
     {
       "name": "libuv",
@@ -45,6 +44,7 @@
       "features": [
         "zlib"
       ]
-    }
+    },
+    "vosk-api"
   ]
 }
