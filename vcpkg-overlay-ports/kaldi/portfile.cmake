@@ -22,8 +22,8 @@ vcpkg_cmake_configure(
 vcpkg_cmake_install()
 
 file(MAKE_DIRECTORY
-    ${CURRENT_PACKAGES_DIR}/share/unofficial-openfst
-    ${CURRENT_PACKAGES_DIR}/debug/share/unofficial-openfst
+    ${CURRENT_PACKAGES_DIR}/share/kaldi
+    ${CURRENT_PACKAGES_DIR}/debug/share/kaldi
 )
 vcpkg_cmake_config_fixup()
 
