@@ -72,7 +72,7 @@ index 0000000..0e594e2
 +include("${CMAKE_CURRENT_LIST_DIR}/fst-targets.cmake")
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 new file mode 100644
-index 0000000..fad03eb
+index 0000000..ac77c6c
 --- /dev/null
 +++ b/src/CMakeLists.txt
 @@ -0,0 +1,49 @@
@@ -108,7 +108,7 @@ index 0000000..fad03eb
 +    EXPORT fst-targets
 +    FILE fst-targets.cmake
 +    NAMESPACE OpenFst::
-+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openfst
++    DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/openfst
 +)
 +
 +# Generate 'OpenFstConfig.cmake' from the 'OpenFstConfig.cmake.in' template
