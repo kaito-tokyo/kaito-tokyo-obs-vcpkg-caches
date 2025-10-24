@@ -16,7 +16,6 @@ vcpkg_cmake_configure(
         -DBUILD_SHARED_LIBS=${BUILD_SHARED}
 )
 
-
 vcpkg_cmake_install()
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 vcpkg_cmake_config_fixup(PACKAGE_NAME vosk)
