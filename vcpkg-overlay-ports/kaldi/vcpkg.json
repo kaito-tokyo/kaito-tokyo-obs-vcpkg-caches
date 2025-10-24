@@ -3,6 +3,7 @@
   "version-string": "master",
   "description": "Kaldi speech recognition toolkit (Vosk fork)",
   "homepage": "https://github.com/alphacep/kaldi",
+  "license": "Apache-2.0",
   "dependencies": [
     "clapack",
     {
