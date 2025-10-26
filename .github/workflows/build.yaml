@@ -31,7 +31,7 @@ jobs:
   BuildOnMacOSArm64:
     runs-on: "macos-15"
 
-    timeout-minutes: 60
+    timeout-minutes: 180
 
     steps:
       - name: "Checkout"
@@ -68,7 +68,7 @@ jobs:
   BuildOnMacOSX64:
     runs-on: "macos-15"
 
-    timeout-minutes: 60
+    timeout-minutes: 180
 
     steps:
       - name: "Checkout"
@@ -105,7 +105,7 @@ jobs:
   BuildOnWindows:
     runs-on: "windows-2022"
 
-    timeout-minutes: 60
+    timeout-minutes: 180
 
     steps:
       - name: "Checkout"
