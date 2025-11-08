@@ -19,7 +19,6 @@
     },
     "fmt",
     "gtest",
-    "leptonica",
     {
       "name": "libuv",
       "platform": "windows | android"
@@ -42,7 +41,6 @@
       "features": [
         "zlib"
       ]
-    },
-    "vosk"
+    }
   ]
 }
